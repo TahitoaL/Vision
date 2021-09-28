@@ -23,3 +23,28 @@ class CaptureManager(object):
         self._startTime = None
         self._framesElapsed = long(0)
         self._fpsEstimated = None
+
+    @property
+    def channel(self):
+        return self._channel
+
+    @channel.setter
+    def channel(self, value):
+        if self._channel != value:
+            self._channel = value
+            self._frame = None
+            
+    @property
+    def frame(self):
+        if self._enteredFrame and self._frame is None:
+            _, self._frame = self._capture.retrieve()
+        return self._frame
+
+    @property
+    def isWritingImage(self):
+        return self._imageFilename is not None
+
+    @property
+    def isWritingVideo(self):
+        return self._videoFilename is not None
+
