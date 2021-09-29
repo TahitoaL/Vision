@@ -44,5 +44,10 @@ class Cameo(object):
         elif keycode == 27: # escape
             self._windowManager.destroyWindow()
 
+<<<<<<< HEAD
     if __name__=="__main__":
         Cameo().run()
+=======
+if __name__=="__main__":
+    Cameo().run()
+>>>>>>> CameoName
