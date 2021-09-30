@@ -3,6 +3,7 @@
 import cv2
 from CaptureManager import CaptureManager
 from WindowManager import WindowManager
+import filters
 
 class Cameo(object):
 
