@@ -1,8 +1,8 @@
 #Cameo.py
 
 import cv2
-from CaptureManager import CaptureManager
-from WindowManager import WindowManager
+from managers.CaptureManager import CaptureManager
+from managers.WindowManager import WindowManager
 import filters
 
 class Cameo(object):
@@ -10,6 +10,7 @@ class Cameo(object):
     def __init__(self):
         self._windowManager = WindowManager('Cameo', self.onKeypress)
         self._captureManager = CaptureManager(cv2.VideoCapture(0), self._windowManager, True)
+        self._curveFilter = filters.FindEdgesFilter()
 
     def run(self):
         """Run the main loop.
@@ -19,7 +20,8 @@ class Cameo(object):
             self._captureManager.enterFrame()
             frame = self._captureManager.frame
 
-            # TODO : filter the frame
+            filters.strokeEdges(frame, frame)
+            self._curveFilter.apply(frame,frame)
 
             self._captureManager.exitFrame()
             self._windowManager.processEvents()
