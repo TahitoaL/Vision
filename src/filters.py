@@ -39,3 +39,12 @@ class SharpenFilter(VConvolutionFilter):
     def __init__(self):
         kernel=numpy.array([-1,-1,-1],[-1,9,-1],[-1,-1,-1])
         VConvolutionFilter.__init__(self,kernel)
+
+
+class FindEdgesFilter(VConvolutionFilter):
+    """An edge-finding filter with 1-pixel radius
+    """
+
+    def __init__(self):
+        kernel=numpy.array([-1,-1,-1],[-1,8,-1],[-1,-1,-1])
+        VConvolutionFilter.__init__(self,kernel)
