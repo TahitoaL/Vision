@@ -48,3 +48,11 @@ class FindEdgesFilter(VConvolutionFilter):
     def __init__(self):
         kernel=numpy.array([-1,-1,-1],[-1,8,-1],[-1,-1,-1])
         VConvolutionFilter.__init__(self,kernel)
+
+class  BlurFilter(VConvolutionFilter):
+    """A blur filter with 2-pixel radius
+    """
+
+    def __init__(self):
+        kernel=numpy.array([[0.04]*5]*5)
+        VConvolutionFilter.__init__(self,kernel)
