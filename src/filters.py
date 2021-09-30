@@ -56,3 +56,12 @@ class  BlurFilter(VConvolutionFilter):
     def __init__(self):
         kernel=numpy.array([[0.04]*5]*5)
         VConvolutionFilter.__init__(self,kernel)
+
+
+class EmbossFilter(VConvolutionFilter):
+    """An emboss filter with 1-pixel radius.
+    """
+
+    def __init__(self, kernel):
+        kernel=numpy.array([-2,-1,0],[-1,1,1],[0,-1,-2])
+        VConvolutionFilter.__init__(self,kernel)
